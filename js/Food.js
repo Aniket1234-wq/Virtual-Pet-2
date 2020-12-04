@@ -1,54 +1,45 @@
-class Food {
-    constructor(){
-        this.image = loadImage("images/Milk.png");
+class Food{
+    constructor() {
+        this.foodStock = 15;
         this.lastFed;
-        this.foodStock = 20;
+        this.image = loadImage("images/Milk.png");
     }
-    getFoodStock(){
+
+    updateFoodStock(foodStock) {
+        this.foodStock = foodStock;
+    }
+
+    getFedTime(lastFed) {
+        this.lastFed = lastFed;
+    }
+
+    deductFood() {
+        if(this.foodStock > 0) (
+            this.foodStock = this.foodStock - 1
+        )
+        return this.foodStock
+
+    }
+
+    getFoodStock() {
         return this.foodStock;
     }
 
-    updateFoodStock(){
-        database.ref('/').update({
-            Food: this.foodStock,
-            feedTime: hour()
-        });
-    }
+    display() {
+        var x = 80, y = 100;
 
-    deductFood(){
-        if(this.foodStock >= 1){
-            this.foodStock = this.foodStock - 1;
-        }
-    }
-
-    addFood(){
-        if(this.foodStock <= 19){
-            this.foodStock++;
-        }
-    }
-
-    display(){
-        background(46, 139, 87);
-
-        var x=80,y=100;
-        
         imageMode(CENTER);
         image(this.image, 720, 220, 70, 70);
-        milk = createSprite(720,720,70,70);
-        milk.addAnimation("milk",this.image);
-        milk.scale = 1;
 
-
-        if(this.foodStock != 0){
-            for(var i = 0;i < this.foodStock;i++){
-                if(i%10===0){
-                    x=80;
-                    y=y+50;
+        if(this.foodStock != 0) {
+            for(var i = 0; i < this.foodStock; i++){
+                if(i%10 == 0) {
+                    x = 80;
+                    y = y + 50;
                 }
-                image(this.image,x,y,50,50);
-                x += 30;
+                image(this.image, x, y, 50, 50);
+                x = x + 30;
             }
         }
-
     }
 }
