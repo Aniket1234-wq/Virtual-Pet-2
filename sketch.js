@@ -1,4 +1,4 @@
-//Create variables here
+//Create Variables here
 var dog, dogImg, happyDog, database, foodS, foodStock;
 var feed, addFood;
 var fedTime, lastFed;
@@ -12,9 +12,9 @@ function preload()
 
 }
 
-function setup() {
+function setup(){
+  canvas = createCanvas(1000, 500);
   database = firebase.database();
-  createCanvas(1000, 500);
   
   foodObj = new Food();
   
