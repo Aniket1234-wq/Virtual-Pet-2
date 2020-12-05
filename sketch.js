@@ -17,6 +17,8 @@ function setup(){
   database = firebase.database();
   
   foodObj = new Food();
+  foodStock=database.ref('Food'); 
+  foodStock.on("value",readStock);
   
   dog = createSprite(800,220,150,150);
   dog.addImage(dogImg)
